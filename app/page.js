@@ -7,13 +7,13 @@ import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import MeshGradient from "@/components/MeshGradient";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen relative">
-      {/* Background */}
-      <MeshGradient />
+      {/* 3D Animated Background - Neural Network / System Design aesthetic */}
+      <AnimatedBackground />
 
       {/* Navigation */}
       <Navbar />
