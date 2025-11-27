@@ -1,11 +1,20 @@
 "use client";
 import { experiences } from "@/lib/data";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useTheme } from "next-themes";
+import { useRef, useEffect, useState } from "react";
 
 export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted ? resolvedTheme === "dark" : true;
 
   return (
     <section id="experience" ref={ref} className="section">
@@ -23,10 +32,14 @@ export default function Experience() {
 
         {/* Timeline */}
         <div className="relative max-w-4xl">
-          {/* Vertical Line */}
+          {/* Vertical Line - gradient in light mode */}
           <div
             className="absolute left-4 md:left-6 top-0 bottom-0 w-px"
-            style={{ background: 'var(--border-default)' }}
+            style={{
+              background: isDark
+                ? 'var(--border-default)'
+                : 'linear-gradient(180deg, rgba(99,102,241,0.4) 0%, rgba(168,85,247,0.3) 50%, rgba(236,72,153,0.2) 100%)'
+            }}
           />
 
           <div className="space-y-8">
@@ -66,14 +79,14 @@ export default function Experience() {
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
                         style={{
                           background: 'var(--success-dim)',
-                          border: '1px solid rgba(52, 211, 153, 0.2)',
+                          border: isDark ? '1px solid rgba(52, 211, 153, 0.2)' : '1px solid rgba(22, 101, 52, 0.15)',
                         }}
                       >
                         <span
                           className="w-1.5 h-1.5 rounded-full animate-pulse-soft"
                           style={{ background: 'var(--success)' }}
                         />
-                        <span style={{ color: 'var(--success)' }}>Current</span>
+                        <span style={{ color: isDark ? 'var(--success)' : '#166534' }}>Current</span>
                       </span>
                     )}
                   </div>

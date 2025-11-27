@@ -20,8 +20,10 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <a
               href={`mailto:${contact.email}`}
-              className="p-2 rounded-lg transition-all duration-200 hover:bg-white/5"
+              className="p-2 rounded-lg transition-all duration-200"
               style={{ color: 'var(--text-muted)' }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-hover)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
               aria-label="Email"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,8 +35,10 @@ export default function Footer() {
               href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg transition-all duration-200 hover:bg-white/5"
+              className="p-2 rounded-lg transition-all duration-200"
               style={{ color: 'var(--text-muted)' }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-hover)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -46,8 +50,10 @@ export default function Footer() {
               href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg transition-all duration-200 hover:bg-white/5"
+              className="p-2 rounded-lg transition-all duration-200"
               style={{ color: 'var(--text-muted)' }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-hover)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

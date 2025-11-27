@@ -6,7 +6,7 @@ const skillsData = [
   {
     title: "Core Focus",
     items: [
-      "Backend development (APIs, services)",
+      "Backend engineering (APIs, microservices)",
       "Distributed systems & concurrency",
       "AI/ML engineering",
       "System design & architecture",
@@ -15,10 +15,12 @@ const skillsData = [
   {
     title: "AI & Machine Learning",
     items: [
-      "PyTorch, deep learning (CNN/RNN/GRU)",
+      "PyTorch, TensorFlow, Scikit-learn",
+      "Pandas, NumPy, Matplotlib",
       "RAG, FAISS, embeddings, LLM integration",
-      "Whisper ASR, multilingual voice systems",
-      "Model optimization & deployment",
+      "Generative AI (LLMs, diffusion models), Agentic AI workflows",
+      "Whisper ASR, multilingual speech systems",
+      "ETL workflows, data analysis & web scraping",
     ],
   },
   {
@@ -26,17 +28,18 @@ const skillsData = [
     items: [
       "Node.js, FastAPI, Django",
       "REST, GraphQL, WebSockets",
-      "Event-driven architecture",
       "React, Next.js, Tailwind CSS",
+      "Event-driven architecture",
     ],
   },
   {
     title: "Cloud, DevOps & Data",
     items: [
-      "AWS, Azure cloud services",
+      "AWS & Azure cloud services",
       "Docker, Kubernetes, GitHub Actions",
-      "PostgreSQL, MySQL, MongoDB",
-      "Redis caching, message queues",
+      "PostgreSQL, MySQL, MongoDB, Redis",
+      "Caching & messaging (Redis, basic Kafka)",
+      "CI/CD, monitoring",
     ],
   },
 ];

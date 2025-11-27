@@ -6,9 +6,10 @@
 
 /* ========================================
    PREMIUM PORTFOLIO - Linear/Vercel Style
-   Light, airy, professional
+   Dark & Light Theme Support
    ======================================== */
 
+/* Dark Mode (default) */
 :root {
   /* Soft dark theme - not pure black */
   --bg-base: #0c0c0f;
@@ -20,7 +21,7 @@
   --border-default: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(255, 255, 255, 0.15);
 
-  /* Primary accent - Indigo/Violet */
+  /* Primary accent - Indigo/Violet (same in both themes) */
   --accent: #6366f1;
   --accent-light: #818cf8;
   --accent-lighter: #a5b4fc;
@@ -35,6 +36,58 @@
   /* Success/Status */
   --success: #34d399;
   --success-dim: rgba(52, 211, 153, 0.12);
+
+  /* Navbar glass */
+  --nav-bg: rgba(15, 15, 20, 0.6);
+  --nav-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Light Mode - FAANG-ready, calm productivity palette */
+.light {
+  /* Backgrounds - soft blue-gray tones, NOT pure white */
+  --bg-base: #F4F5FB;
+  --bg-elevated: #FFFFFF;
+  --bg-surface: #EEF1F8;
+  --bg-hover: #E4E8F2;
+  --bg-subtle: #ECEFFA;
+
+  /* Borders - refined visibility */
+  --border-default: #E2E8F0;
+  --border-hover: #CBD5E1;
+
+  /* Accent - indigo/violet gradient palette */
+  --accent: #6366F1;
+  --accent-light: #4F46E5;
+  --accent-lighter: #4338CA;
+  --accent-dim: #EEF2FF;
+  --accent-glow: rgba(99, 102, 241, 0.25);
+
+  /* Text hierarchy - high contrast for readability */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-on-accent: #F9FAFB;
+
+  /* Success/Status - balanced green */
+  --success: #059669;
+  --success-dim: #DCFCE7;
+  --success-text: #166534;
+
+  /* Chips/Tags */
+  --chip-bg: #EEF2FF;
+  --chip-text: #3730A3;
+
+  /* Navbar glass - more opaque for better contrast */
+  --nav-bg: rgba(255, 255, 255, 0.88);
+  --nav-border: #E2E8F0;
+
+  /* Card shadows */
+  --card-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  --card-shadow-hover: 0 20px 45px rgba(15, 23, 42, 0.1);
+
+  /* Code window - keep dark for contrast */
+  --code-bg: #0F172A;
+  --code-header: #1E293B;
 }
 
 @layer base {
@@ -56,6 +109,7 @@
     letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    @apply transition-colors duration-300;
   }
 }
 
@@ -79,11 +133,25 @@
     @apply rounded-2xl transition-all duration-300;
   }
 
+  /* Light mode: cards start with subtle shadow */
+  .light .card {
+    box-shadow: var(--card-shadow);
+  }
+
   .card:hover {
-    background: var(--bg-surface);
     border-color: var(--border-hover);
     transform: translateY(-2px);
+  }
+
+  /* Dark mode card hover */
+  .dark .card:hover {
+    background: var(--bg-surface);
     box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Light mode card hover - stronger shadow, keep white bg */
+  .light .card:hover {
+    box-shadow: var(--card-shadow-hover);
   }
 
   /* Buttons */
@@ -93,10 +161,21 @@
     color: white;
   }
 
+  /* Light mode: gradient button */
+  .light .btn-primary {
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #A855F7 100%);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
+  }
+
   .btn-primary:hover {
     background: var(--accent-light);
     transform: translateY(-1px);
     box-shadow: 0 8px 24px var(--accent-glow);
+  }
+
+  .light .btn-primary:hover {
+    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #9333EA 100%);
+    box-shadow: 0 8px 28px rgba(99, 102, 241, 0.35);
   }
 
   .btn-secondary {
@@ -119,6 +198,12 @@
     color: var(--accent-lighter);
   }
 
+  /* Light mode chips - solid indigo tint */
+  .light .chip {
+    background: var(--chip-bg);
+    color: var(--chip-text);
+  }
+
   .chip-outline {
     @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-md;
     background: transparent;
@@ -126,10 +211,22 @@
     color: var(--text-muted);
   }
 
+  /* Light mode chip-outline - subtle fill */
+  .light .chip-outline {
+    background: var(--bg-surface);
+    border-color: var(--border-default);
+    color: var(--text-secondary);
+  }
+
   /* Section Headers */
   .section-label {
     @apply text-xs font-semibold uppercase tracking-widest mb-3;
     color: var(--accent-light);
+  }
+
+  /* Light mode: deeper accent for section labels */
+  .light .section-label {
+    color: #4F46E5;
   }
 
   .section-title {
@@ -205,4 +302,12 @@
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+/* ========================================
+   SMOOTH TRANSITIONS FOR THEME SWITCH
+   ======================================== */
+
+*, *::before, *::after {
+  @apply transition-colors duration-200;
 }
