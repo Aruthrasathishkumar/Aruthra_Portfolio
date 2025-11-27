@@ -1,15 +1,11 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useMounted } from "@/hooks/useMounted";
 
 export default function MeshGradient() {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   // Avoid hydration mismatch
   const isDark = mounted ? resolvedTheme === "dark" : true;

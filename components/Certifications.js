@@ -6,7 +6,7 @@ import Image from "next/image";
 const certifications = [
   {
     id: "aws-data-eng",
-    title: "AWS Academy — Data Engineering",
+    title: "AWS Academy - Data Engineering",
     provider: "Amazon Web Services (AWS Academy)",
     level: "TRAINED",
     type: "Training Program",
@@ -20,7 +20,7 @@ const certifications = [
   },
   {
     id: "azure-fundamentals",
-    title: "Microsoft Certified — Azure Fundamentals (AZ-900)",
+    title: "Microsoft Certified - Azure Fundamentals (AZ-900)",
     provider: "Microsoft",
     level: "FUNDAMENTALS",
     type: "Certification",

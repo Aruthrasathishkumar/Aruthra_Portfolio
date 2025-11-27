@@ -40,6 +40,7 @@
   /* Navbar glass */
   --nav-bg: rgba(15, 15, 20, 0.6);
   --nav-border: rgba(255, 255, 255, 0.1);
+  --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Light Mode - FAANG-ready, calm productivity palette */
@@ -80,6 +81,7 @@
   /* Navbar glass - more opaque for better contrast */
   --nav-bg: rgba(255, 255, 255, 0.88);
   --nav-border: #E2E8F0;
+  --nav-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
 
   /* Card shadows */
   --card-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);

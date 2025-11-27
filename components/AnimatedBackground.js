@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useMemo, useEffect, useState } from "react";
+import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useTheme } from "next-themes";
 import * as THREE from "three";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { useMouseParallax } from "@/hooks/useMouseParallax";
+import { useMounted } from "@/hooks/useMounted";
 
 // Configuration for easy tuning
 const CONFIG = {
@@ -291,13 +292,9 @@ function GradientOverlays({ isDark }) {
 // Main AnimatedBackground Component
 export default function AnimatedBackground() {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const prefersReducedMotion = usePrefersReducedMotion();
   const mousePosition = useMouseParallax(CONFIG.parallaxIntensity);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Default to dark theme during SSR to avoid flash
   const isDark = mounted ? resolvedTheme === "dark" : true;

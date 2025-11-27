@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
+import { useMounted } from "@/hooks/useMounted";
 
 const NAV_LINKS = [
   { id: "home", label: "Overview" },
@@ -20,16 +21,17 @@ const MOBILE_NAV_LINKS = [
   { id: "contact", label: "Contact" },
 ];
 
+// Stable underline styles - must be identical on server and client to prevent hydration mismatch
+const NAV_UNDERLINE_STYLE = {
+  background: "linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)",
+  boxShadow: "0 0 8px rgba(99,102,241,0.5)",
+};
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
-
-  // Avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
+  const { setTheme, resolvedTheme } = useTheme();
 
   // Handle scroll for navbar background glass effect
   useEffect(() => {
@@ -84,7 +86,8 @@ export default function Navbar() {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
-  const isDark = resolvedTheme === "dark";
+  // Use mounted check to ensure isDark is consistent between server and client
+  const isDark = mounted ? resolvedTheme === "dark" : true;
 
   return (
     <header
@@ -94,9 +97,7 @@ export default function Navbar() {
         backdropFilter: isScrolled ? 'blur(20px)' : 'none',
         WebkitBackdropFilter: isScrolled ? 'blur(20px)' : 'none',
         borderBottom: isScrolled ? '1px solid var(--nav-border)' : '1px solid transparent',
-        boxShadow: isScrolled
-          ? (isDark ? '0 4px 30px rgba(0,0,0,0.5)' : '0 4px 30px rgba(0,0,0,0.08)')
-          : 'none',
+        boxShadow: isScrolled ? 'var(--nav-shadow)' : 'none',
       }}
     >
       {/* Inner container for content alignment */}
@@ -150,10 +151,7 @@ export default function Navbar() {
                   <motion.span
                     layoutId="nav-underline"
                     className="absolute left-0 right-0 -bottom-0.5 h-[2px] rounded-full"
-                    style={{
-                      background: 'linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)',
-                      boxShadow: isDark ? '0 0 8px rgba(99,102,241,0.5)' : '0 0 6px rgba(99,102,241,0.3)',
-                    }}
+                    style={NAV_UNDERLINE_STYLE}
                     transition={{
                       type: "spring",
                       stiffness: 400,
@@ -211,9 +209,7 @@ export default function Navbar() {
                   <motion.span
                     layoutId="mobile-nav-underline"
                     className="absolute left-0 right-0 -bottom-0.5 h-[2px] rounded-full"
-                    style={{
-                      background: 'linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899)',
-                    }}
+                    style={NAV_UNDERLINE_STYLE}
                     transition={{
                       type: "spring",
                       stiffness: 400,

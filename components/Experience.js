@@ -2,17 +2,14 @@
 import { experiences } from "@/lib/data";
 import { motion, useInView } from "framer-motion";
 import { useTheme } from "next-themes";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
+import { useMounted } from "@/hooks/useMounted";
 
 export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   const isDark = mounted ? resolvedTheme === "dark" : true;
 

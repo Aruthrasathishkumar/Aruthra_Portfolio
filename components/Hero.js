@@ -1,17 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useMounted } from "@/hooks/useMounted";
 import { hero } from "@/lib/data";
 
 // Simple AI System Visual Component
 function SystemVisual() {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   const isDark = mounted ? resolvedTheme === "dark" : true;
 
@@ -69,13 +65,13 @@ function SystemVisual() {
                 <span style={{ color: isDark ? 'var(--text-muted)' : '#64748B' }}>(self):</span>
               </div>
               <div className="ml-8 mt-1" style={{ color: isDark ? 'var(--text-secondary)' : '#CBD5E1' }}>
-                self.model = <span style={{ color: '#fcd34d' }}>"transformer"</span>
+                self.model = <span style={{ color: '#fcd34d' }}>&quot;transformer&quot;</span>
               </div>
               <div className="ml-8" style={{ color: isDark ? 'var(--text-secondary)' : '#CBD5E1' }}>
-                self.embeddings = <span style={{ color: '#fcd34d' }}>"FAISS"</span>
+                self.embeddings = <span style={{ color: '#fcd34d' }}>&quot;FAISS&quot;</span>
               </div>
               <div className="ml-8" style={{ color: isDark ? 'var(--text-secondary)' : '#CBD5E1' }}>
-                self.cache = <span style={{ color: '#fcd34d' }}>"Redis"</span>
+                self.cache = <span style={{ color: '#fcd34d' }}>&quot;Redis&quot;</span>
               </div>
               <div className="mt-3 ml-4">
                 <span style={{ color: '#c084fc' }}>async def</span>
@@ -123,11 +119,7 @@ function SystemVisual() {
 
 export default function Hero() {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useMounted();
 
   const isDark = mounted ? resolvedTheme === "dark" : true;
 
