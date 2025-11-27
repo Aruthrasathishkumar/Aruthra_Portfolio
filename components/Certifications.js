@@ -79,7 +79,7 @@ export default function Certifications() {
                   {/* Badge Image */}
                   <div
                     className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden flex items-center justify-center"
-                    style={{ background: "rgba(15, 23, 42, 0.6)" }}
+                    style={{ background: "var(--bg-surface)" }}
                   >
                     <Image
                       src={cert.badgeImage}

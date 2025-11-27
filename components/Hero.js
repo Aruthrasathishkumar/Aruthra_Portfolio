@@ -1,9 +1,20 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { hero } from "@/lib/data";
 
 // Simple AI System Visual Component
 function SystemVisual() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted ? resolvedTheme === "dark" : true;
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -15,58 +26,63 @@ function SystemVisual() {
       <div className="relative w-full max-w-md mx-auto">
         {/* Floating animation wrapper */}
         <div className="animate-float">
-          {/* Code window mockup */}
+          {/* Code window mockup - ALWAYS dark for contrast */}
           <div
             className="rounded-2xl overflow-hidden"
             style={{
-              background: 'var(--bg-elevated)',
-              border: '1px solid var(--border-default)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+              background: isDark ? 'var(--bg-elevated)' : '#0F172A',
+              border: isDark ? '1px solid var(--border-default)' : '1px solid #1E293B',
+              boxShadow: isDark
+                ? '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+                : '0 25px 60px -12px rgba(15, 23, 42, 0.35)',
             }}
           >
             {/* Window header */}
             <div
               className="flex items-center gap-2 px-4 py-3"
-              style={{ background: 'var(--bg-surface)', borderBottom: '1px solid var(--border-default)' }}
+              style={{
+                background: isDark ? 'var(--bg-surface)' : '#1E293B',
+                borderBottom: isDark ? '1px solid var(--border-default)' : '1px solid #334155'
+              }}
             >
               <div className="flex gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                 <div className="w-3 h-3 rounded-full bg-green-500/80" />
               </div>
-              <span className="text-xs font-mono ml-2" style={{ color: 'var(--text-muted)' }}>
+              <span className="text-xs font-mono ml-2" style={{ color: isDark ? 'var(--text-muted)' : '#94A3B8' }}>
                 system_architecture.py
               </span>
             </div>
 
-            {/* Code content */}
+            {/* Code content - always light text on dark */}
             <div className="p-5 font-mono text-sm leading-relaxed">
-              <div style={{ color: 'var(--text-muted)' }}># AI Pipeline Architecture</div>
+              <div style={{ color: isDark ? 'var(--text-muted)' : '#64748B' }}># AI Pipeline Architecture</div>
               <div className="mt-3">
                 <span style={{ color: '#c084fc' }}>class</span>
-                <span style={{ color: 'var(--accent-lighter)' }}> MLPipeline</span>
-                <span style={{ color: 'var(--text-muted)' }}>:</span>
+                <span style={{ color: isDark ? 'var(--accent-lighter)' : '#A5B4FC' }}> MLPipeline</span>
+                <span style={{ color: isDark ? 'var(--text-muted)' : '#64748B' }}>:</span>
               </div>
               <div className="ml-4 mt-1">
                 <span style={{ color: '#c084fc' }}>def</span>
                 <span style={{ color: '#67e8f9' }}> __init__</span>
-                <span style={{ color: 'var(--text-muted)' }}>(self):</span>
+                <span style={{ color: isDark ? 'var(--text-muted)' : '#64748B' }}>(self):</span>
               </div>
-              <div className="ml-8 mt-1" style={{ color: 'var(--text-secondary)' }}>
+              <div className="ml-8 mt-1" style={{ color: isDark ? 'var(--text-secondary)' : '#CBD5E1' }}>
                 self.model = <span style={{ color: '#fcd34d' }}>"transformer"</span>
               </div>
-              <div className="ml-8" style={{ color: 'var(--text-secondary)' }}>
+              <div className="ml-8" style={{ color: isDark ? 'var(--text-secondary)' : '#CBD5E1' }}>
                 self.embeddings = <span style={{ color: '#fcd34d' }}>"FAISS"</span>
               </div>
-              <div className="ml-8" style={{ color: 'var(--text-secondary)' }}>
+              <div className="ml-8" style={{ color: isDark ? 'var(--text-secondary)' : '#CBD5E1' }}>
                 self.cache = <span style={{ color: '#fcd34d' }}>"Redis"</span>
               </div>
               <div className="mt-3 ml-4">
                 <span style={{ color: '#c084fc' }}>async def</span>
                 <span style={{ color: '#67e8f9' }}> process</span>
-                <span style={{ color: 'var(--text-muted)' }}>(self, data):</span>
+                <span style={{ color: isDark ? 'var(--text-muted)' : '#64748B' }}>(self, data):</span>
               </div>
-              <div className="ml-8 mt-1" style={{ color: 'var(--text-muted)' }}>
+              <div className="ml-8 mt-1" style={{ color: isDark ? 'var(--text-muted)' : '#64748B' }}>
                 <span style={{ color: '#c084fc' }}>return await</span> self.pipeline.run(data)
               </div>
             </div>
@@ -106,6 +122,15 @@ function SystemVisual() {
 }
 
 export default function Hero() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted ? resolvedTheme === "dark" : true;
+
   return (
     <section id="home" className="min-h-screen flex items-center px-4 md:px-8 lg:px-12 pt-20 pb-12">
       <div className="container-main w-full">
@@ -120,10 +145,13 @@ export default function Hero() {
             >
               <span
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
-                style={{ background: 'var(--success-dim)', border: '1px solid rgba(52, 211, 153, 0.2)' }}
+                style={{
+                  background: 'var(--success-dim)',
+                  border: isDark ? '1px solid rgba(52, 211, 153, 0.2)' : '1px solid rgba(22, 101, 52, 0.15)'
+                }}
               >
                 <span className="w-2 h-2 rounded-full animate-pulse-soft" style={{ background: 'var(--success)' }} />
-                <span style={{ color: 'var(--success)' }}>Open to 2026 New Grad & Early Career Roles</span>
+                <span style={{ color: isDark ? 'var(--success)' : '#166534' }}>Open to 2026 New Grad & Early Career Roles</span>
               </span>
             </motion.div>
 
