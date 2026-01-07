@@ -1,5 +1,5 @@
 "use client";
-import { contact, hero } from "@/lib/data";
+import { contact } from "@/lib/data";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
@@ -48,17 +48,6 @@ export default function Contact() {
         </svg>
       ),
     },
-    {
-      label: "Resume",
-      value: "Download PDF",
-      href: hero.resumeUrl,
-      actionLabel: "Download",
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
-    },
   ];
 
   return (
@@ -79,7 +68,7 @@ export default function Contact() {
         </motion.div>
 
         {/* Contact Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
           {contactCards.map((card, index) => {
             const CardWrapper = card.href ? 'a' : 'button';
             const cardProps = card.href
