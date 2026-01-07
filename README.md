@@ -36,7 +36,3 @@ app/
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [AWS Amplify Documentation](https://docs.aws.amazon.com/amplify/)
-
-## Contact
-
-Feel free to reach out if you have any questions or feedback!
