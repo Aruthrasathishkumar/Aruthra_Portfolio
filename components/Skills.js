@@ -8,8 +8,8 @@ const skillsData = [
     items: [
       "Backend engineering (APIs, microservices)",
       "Distributed systems & concurrency",
-      "AI/ML engineering",
       "System design & architecture",
+      "AI/ML engineering",
     ],
   },
   {
