@@ -1,48 +1,7 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
-const skillsData = [
-  {
-    title: "Core Focus",
-    items: [
-      "Backend engineering (APIs, microservices)",
-      "Distributed systems & concurrency",
-      "System design & architecture",
-      "AI/ML engineering",
-    ],
-  },
-  {
-    title: "AI & Machine Learning",
-    items: [
-      "PyTorch, TensorFlow, Scikit-learn",
-      "Pandas, NumPy, Matplotlib",
-      "RAG, FAISS, embeddings, LLM integration",
-      "Generative AI (LLMs, diffusion models), Agentic AI workflows",
-      "Whisper ASR, multilingual speech systems",
-      "ETL workflows, data analysis & web scraping",
-    ],
-  },
-  {
-    title: "Backend & Web",
-    items: [
-      "Node.js, FastAPI, Django",
-      "REST, GraphQL, WebSockets",
-      "React, Next.js, Tailwind CSS",
-      "Event-driven architecture",
-    ],
-  },
-  {
-    title: "Cloud, DevOps & Data",
-    items: [
-      "AWS & Azure cloud services",
-      "Docker, Kubernetes, GitHub Actions",
-      "PostgreSQL, MySQL, MongoDB, Redis",
-      "Caching & messaging (Redis, basic Kafka)",
-      "CI/CD, monitoring",
-    ],
-  },
-];
+import { skills as skillsData } from "@/lib/data";
 
 export default function Skills() {
   const ref = useRef(null);
