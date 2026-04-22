@@ -70,22 +70,6 @@ export default function Experience() {
                       {exp.period}
                     </span>
 
-                    {/* Current Badge */}
-                    {index === 0 && (
-                      <span
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
-                        style={{
-                          background: 'var(--success-dim)',
-                          border: isDark ? '1px solid rgba(52, 211, 153, 0.2)' : '1px solid rgba(22, 101, 52, 0.15)',
-                        }}
-                      >
-                        <span
-                          className="w-1.5 h-1.5 rounded-full animate-pulse-soft"
-                          style={{ background: 'var(--success)' }}
-                        />
-                        <span style={{ color: isDark ? 'var(--success)' : '#166534' }}>Current</span>
-                      </span>
-                    )}
                   </div>
 
                   {/* Role & Company */}

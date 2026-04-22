@@ -143,7 +143,7 @@ export default function Hero() {
                 }}
               >
                 <span className="w-2 h-2 rounded-full animate-pulse-soft" style={{ background: 'var(--success)' }} />
-                <span style={{ color: isDark ? 'var(--success)' : '#166534' }}>Open to 2026 New Grad & Early Career Roles</span>
+                <span style={{ color: isDark ? 'var(--success)' : '#166534' }}>Open to Software Engineering and AI/ML Roles</span>
               </span>
             </motion.div>
 

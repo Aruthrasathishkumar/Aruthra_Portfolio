@@ -8,7 +8,7 @@ const education = [
     degree: "Master of Science - Information Systems",
     school: "George Mason University",
     location: "Fairfax, Virginia, USA",
-    dates: "Aug 2024 - May 2026 (Expected)",
+    dates: "Aug 2024 - May 2026",
     summary:
       "Graduate program focused on backend systems, distributed computing, data engineering, and AI/ML applications.",
     highlights: [
@@ -90,22 +90,6 @@ export default function Education() {
                       {edu.dates}
                     </span>
 
-                    {/* Current Badge */}
-                    {edu.isCurrent && (
-                      <span
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
-                        style={{
-                          background: "var(--success-dim)",
-                          border: "1px solid rgba(52, 211, 153, 0.2)",
-                        }}
-                      >
-                        <span
-                          className="w-1.5 h-1.5 rounded-full animate-pulse-soft"
-                          style={{ background: "var(--success)" }}
-                        />
-                        <span style={{ color: "var(--success)" }}>In Progress</span>
-                      </span>
-                    )}
                   </div>
 
                   {/* Degree */}
